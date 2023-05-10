@@ -1,0 +1,8 @@
+CREATE DATABASE HASTANE
+
+USE HASTANE
+CREATE TABLE Hasta(
+TCNo int Primary Key, 
+Ad nvarchar(30) Not Null,
+Soyad nvarchar(30) Not Null
+)
