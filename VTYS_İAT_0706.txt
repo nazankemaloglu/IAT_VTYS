@@ -1,0 +1,61 @@
+create database Okul
+
+use Okul
+
+create table Ogrenci(
+Ogr_No int identity(101,1) Primary Key,
+Ad nvarchar(30) not null,
+Soyad nvarchar(30) not null
+)
+
+use Okul 
+
+create table Not_(
+Not_Id int identity(1,1) Primary Key,
+OgrNo int Foreign Key References Ogrenci(Ogr_No),
+DersKodu nvarchar(10) not null,
+Vize float not null,
+Final float 
+)
+
+use Okul 
+insert into Ogrenci(Ad,Soyad) 
+values
+('Ali',	'Turan'),
+('Ahmet',	'Büyük'),
+('Can', 'Türkoğlu'),
+('Aziz',	'Keskin'),
+('Talat',	'Şanlı'),
+('Kamuran',	'Keçe'),
+('Turgut', 	'Cemal'),
+('Selin',	'Korkmaz'),
+('Kemal',	'Öztürk'),
+('Suzan', 	'Demirci')
+
+
+insert into Not_(OgrNo, DersKodu, Vize, Final)
+values
+(105,	'MM1',	92,	88),
+(101,	'MM3',	82,	89),
+(103,	'DH5',	54,	65),
+(104,	'DH5',	85,	74),
+(102,	'DH6',	69,	58),
+(106,	'DH6',	25,	48),
+(107,	'B1',	78,	86),
+(107,	'B4',	48,	59),
+(108,	'I2',	96,	100),
+(109,	'I2',35,	48),
+(108,	'I1',	45,	50),
+(105,	'MM3', 85,	70),
+(110,	'B4',	25,	36),
+(110,	'B1',	14,	24)
+
+
+select Ad, Soyad from Ogrenci INNER JOIN Not_ ON 
+Ogrenci.Ogr_No=Not_.OgrNo WHERE Not_.Vize>50.0
+
+select Ogrenci.Ad , Soyad, Not_.Vize from Ogrenci INNER JOIN Not_ ON 
+Ogrenci.Ogr_No=Not_.OgrNo WHERE Not_.Vize>50.0
+
+select Ad, Soyad from Ogrenci INNER JOIN Not_ ON
+Not_.OgrNo=Ogrenci.Ogr_No WHERE Not_.DersKodu='I2'

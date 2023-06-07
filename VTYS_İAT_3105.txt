@@ -1,0 +1,40 @@
+create database Hastane
+
+use Hastane
+
+create table Hasta(
+HastaId int identity(15223,1) Primary Key,
+Soyad nvarchar(30) not null,
+Ad nvarchar(30) not null,
+Cinsiyet nvarchar(1),
+Boy float not null,
+Kilo float not null
+)
+
+
+insert into Hasta(Soyad,Ad,Cinsiyet,Boy,Kilo)
+values('Smith','Deniz','F',158.0,47.0)
+
+
+insert into Hasta(Soyad,Ad,Cinsiyet,Boy,Kilo)
+values
+('Agarwal', 'Arjun','M',192.00,	89.00),
+('Adams', 'Poppy',	'F', 185.00, 92.00),
+('Johnson',	'Tierra', 'F',167.00,59.00),
+('Khouri',	'Mohammed',	'M',149.00,	44.00)
+
+select * from Hasta
+
+select Ad,Soyad from Hasta
+
+delete from Hasta where HastaId=15227
+
+update Hasta set Kilo=50 where Kilo<50.0
+
+select * from Hasta where Cinsiyet='M'
+
+select Ad, Soyad from Hasta where Cinsiyet='F'
+
+select * from Hasta where Boy>160.0 AND Kilo>75.0
+
+select * from Hasta where Boy>160.0 OR Kilo>75.0
